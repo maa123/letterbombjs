@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Letter Bomb Offline</title>
+	<style type="text/css">
+		.macaddress{
+			font-size: 1.5rem;
+			border-color: #f44336;
+			outline: none;
+			border-style: solid;
+		}
+		.macaddress.input-ok{
+			border-color: #4caf50;
+		}
+		.macaddress::focus{
+			border-color: #f44336;
+		}
+		.macaddress.input-ok::focus{
+			border-color: #4caf50;
+		}
+		.green {
+			color: #4caf50;
+		}
+		.hide{
+			display: none;
+		}
+		select{
+			font-size: 1.5rem;
+		}
+	</style>
+	<script defer src="jszip.min.js"></script>
+	<script src="lib.js"></script>
+	<script src="main.js"></script>
+</head>
+<body>
+<h1>LetterBomb Offline</h1>
+<form id="form" class="hide">
+	<p style="font-size: 1.5em;">Mac Address</p>
+	<p>(Wii本体設定→インターネット→本体情報で確認可能です)</p>
+	<p id="minputs">
+	<input type="text" placeholder="00" id="m0" class="macaddress" maxlength=2 size="2" onkeyup="focusId(this, 'm1')">
+	<input type="text" placeholder="00" id="m1" class="macaddress" maxlength=2 size="2" onkeyup="focusId(this, 'm2')">
+	<input type="text" placeholder="00" id="m2" class="macaddress" maxlength=2 size="2" onkeyup="focusId(this, 'm3')">
+	<input type="text" placeholder="00" id="m3" class="macaddress" maxlength=2 size="2" onkeyup="focusId(this, 'm4')">
+	<input type="text" placeholder="00" id="m4" class="macaddress" maxlength=2 size="2" onkeyup="focusId(this, 'm5')">
+	<input type="text" placeholder="00" id="m5" class="macaddress" maxlength=2 size="2">
+	<span id="minfo" class="hide green">✔</span>
+	</p>
+	<p>バージョン</p>
+	<select id="version">
+		<option value="templateJ.bin" selected="true">4.3J</option>
+		<option value="templateU.bin">4.3U</option>
+		<option value="templateE.bin">4.3E</option>
+		<option value="templateK.bin">4.3K</option>
+	</select>
+	<p id="infoText"></p>
+	<button type="button" id="dl" disabled="true">LetterBombを生成</button>
+</form>	
+</body>
+</html>
