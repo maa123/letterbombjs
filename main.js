@@ -78,6 +78,13 @@ const createLetterBomb = async (macAddress, region) => {
             }
         }
     }
+    for(let i = 0; i < 5; i++) {
+        document.getElementById(`m${i}`).addEventListener('keyup', e => {
+            if(e.key !== 'ArrowLeft'){
+                focusId(e.target, `m${i+1}`);
+            }
+        });
+    }
     document.getElementById('form').classList.remove('hide');
     document.getElementById('minputs').addEventListener('keyup', e => {
         e.target.classList.remove('input-ok');
