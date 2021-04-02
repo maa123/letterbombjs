@@ -9,7 +9,7 @@ const oui_search = [
     [],
     []
 ];
-const checkMacAddress = () => {
+const getMacAddress = () => {
     const inputs = [];
     for (let i = 0; i < 6; i++) {
         inputs.push(document.getElementById(`m${i}`).value);
@@ -18,6 +18,10 @@ const checkMacAddress = () => {
         }
         inputs[i] = parseInt(inputs[i], 16);
     }
+    return inputs;
+}
+const checkMacAddress = () => {
+    const inputs = getMacAddress();
     return (oui_list.some(v => v[0] === inputs[0] && v[1] === inputs[1] && v[2] === inputs[2]));
 }
 const sha1HMAC = async (key, msg) => {
@@ -103,14 +107,7 @@ const createLetterBomb = async (macAddress, region) => {
         }
     });
     document.getElementById('dl').addEventListener('click', () => {
-        const inputs = [];
-        for (let i = 0; i < 6; i++) {
-            inputs.push(document.getElementById(`m${i}`).value);
-            if (inputs[i].length !== 2) {
-                return false;
-            }
-            inputs[i] = parseInt(inputs[i], 16);
-        }
+        const inputs = getMacAddress();
         createLetterBomb(inputs, document.getElementById('version').value).then(() => {
             document.getElementById('dl').removeAttribute("disabled");
             document.getElementById('infoText').textContent = "";
